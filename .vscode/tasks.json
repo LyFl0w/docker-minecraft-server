@@ -1,0 +1,20 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "generate buildtools",
+            "type": "shell",
+            "command": "mkdir -p build/spigot && curl -o build/spigot/BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar",
+        },
+        {
+            "label": "clean compile spigot",
+            "type": "shell",
+            "command": "cd build/spigot && rm spigot-*.jar && java -Xms512M -jar BuildTools.jar --compile SPIGOT"
+        },
+        {
+            "label": "clean download paper",
+            "type": "shell",
+            "command": "cd build/papermc && ./download.sh",
+        }
+    ]
+}
