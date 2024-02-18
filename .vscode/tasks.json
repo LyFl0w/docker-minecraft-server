@@ -4,17 +4,17 @@
         {
             "label": "generate buildtools",
             "type": "shell",
-            "command": "mkdir -p build/spigot && curl -o build/spigot/BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar",
+            "command": "mkdir -p dockerfiles/spigot/build && curl -o dockerfiles/spigot/build/BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar",
         },
         {
             "label": "clean compile spigot",
             "type": "shell",
-            "command": "cd build/spigot && rm spigot-*.jar && java -Xms512M -jar BuildTools.jar --compile SPIGOT"
+            "command": "cd dockerfiles/spigot/build && rm spigot-*.jar && java -Xms512M -jar BuildTools.jar --compile SPIGOT"
         },
         {
             "label": "clean download paper",
             "type": "shell",
-            "command": "cd build/papermc && ./download.sh",
+            "command": "cd dockerfiles/papermc/build && ./download.sh",
         }
     ]
 }

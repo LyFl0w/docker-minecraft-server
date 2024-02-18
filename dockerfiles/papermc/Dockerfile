@@ -10,14 +10,17 @@ ENV MC_RAM="4G" \
 -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs \
 -Daikars.new.flags=true"
 
-COPY start.sh .
-COPY build/papermc/paper-*.jar .
 RUN apk update \
     && apk add udev \
     && apk add bash \
+    && apk add wget \
     && apk add openjdk17-jre \
     && apk cache clean \
+    && wget https://raw.githubusercontent.com/LyFl0w/docker-minecraft-server/main/start.sh \
+    && apk del wget \
     && mkdir /server
+
+COPY build/paper-*.jar .
 
 CMD ["bash", "./start.sh"]
 
