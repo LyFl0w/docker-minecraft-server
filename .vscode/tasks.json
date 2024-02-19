@@ -9,12 +9,17 @@
         {
             "label": "clean compile spigot",
             "type": "shell",
-            "command": "cd dockerfiles/spigot/build && rm spigot-*.jar && java -Xms512M -jar BuildTools.jar --compile SPIGOT"
+            "command": "cd dockerfiles/spigot/build && rm -f spigot-*.jar && java -Xms512M -jar BuildTools.jar --compile SPIGOT"
         },
         {
             "label": "clean download paper",
             "type": "shell",
             "command": "cd dockerfiles/papermc/build && ./download.sh",
+        },
+        {
+            "label": "clean download bungeecord",
+            "type": "shell",
+            "command": "mkdir -p dockerfiles/bungeecord/build && cd dockerfiles/bungeecord/build && rm -f BungeeCord.jar && curl -o BungeeCord.jar https://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/bootstrap/target/BungeeCord.jar",
         }
     ]
 }

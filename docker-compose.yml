@@ -1,0 +1,29 @@
+version: '3.9'
+
+services:
+  bungeecord:
+        image: server-minecraft:bungeecord
+        environment:
+          MC_RAM: "2G"
+        ports:
+          - "25565:25565"
+        volumes:
+          - ./servermc/bungeecord:/server
+
+  papermc1:
+    image: server-minecraft:papermc
+    environment:
+      MC_RAM: "2G"
+    ports:
+      - "25564:25565"
+    volumes:
+      - ./servermc/server1:/server
+
+  spigot1:
+      image: server-minecraft:spigot
+      environment:
+        MC_RAM: "2G"
+      ports:
+        - "25563:25565"
+      volumes:
+        - ./servermc/server2:/server
