@@ -1,6 +1,11 @@
 .vscode/settings.json
 
-build/*
+build/
+BuildData/
+Bukkit/
+CraftBukkit/
+
 servermc/
+
 
 !build/download.sh
