@@ -6,6 +6,7 @@ if [ -f "server/*.jar" ]; then
 fi
 
 chmod 770 -R /server
+chown -R root:sudo /server
 
 JAR_FILE=$(ls *.jar)
 
