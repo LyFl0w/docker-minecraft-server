@@ -4,22 +4,22 @@
         {
             "label": "generate buildtools",
             "type": "shell",
-            "command": "mkdir -p dockerfiles/spigot/build && curl -o dockerfiles/spigot/build/BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar",
+            "command": "mkdir -p build/spigot && curl -o build/spigot/BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar",
         },
         {
             "label": "clean compile spigot",
             "type": "shell",
-            "command": "cd dockerfiles/spigot/build && rm -f spigot-*.jar && java -Xms512M -jar BuildTools.jar --compile SPIGOT"
+            "command": "cd build/spigot && rm -f spigot-*.jar && java -Xms512M -jar BuildTools.jar --compile SPIGOT"
         },
         {
             "label": "clean download paper",
             "type": "shell",
-            "command": "cd dockerfiles/papermc/build && ./download.sh",
+            "command": "cd build/papermc && ./download.sh",
         },
         {
             "label": "clean download bungeecord",
             "type": "shell",
-            "command": "mkdir -p dockerfiles/bungeecord/build && cd dockerfiles/bungeecord/build && rm -f BungeeCord.jar && curl -o BungeeCord.jar https://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/bootstrap/target/BungeeCord.jar",
+            "command": "mkdir -p build/bungeecord && cd build/bungeecord && rm -f BungeeCord.jar && curl -o BungeeCord.jar https://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/bootstrap/target/BungeeCord.jar",
         }
     ]
 }

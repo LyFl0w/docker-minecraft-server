@@ -1,17 +1,16 @@
 #!/bin/bash
 
-# Parcourir tous les sous-dossiers dans le répertoire des Dockerfiles
-for subdir in "dockerfiles"/*/; do
-    # Extraire le nom du sous-dossier (dernière partie du chemin)
-    dir_name=$(basename "$subdir")
+JAR_FILES=("bungeecord/BungeeCord" "papermc/paper-*" "spigot/spigot-*")
 
-    # Construire l'image Docker avec le nom spécifié
-    docker build -t "server-minecraft:$dir_name" "$subdir"
+for jar_path in "${JAR_FILES[@]}"; do
+    dir_name=$(basename "$(dirname "$jar_path")")
+    jar_file=$(basename "$jar_path")
     
-    # Vérifier si la construction de l'image a réussi
+    docker build -t "server-minecraft:${dir_name}" --build-arg JAR_FILE="${jar_path}" .
+    
     if [ $? -eq 0 ]; then
-        echo "Image server-minecraft:$dir_name créée avec succès."
+        echo "Image server-minecraft:${dir_name} créée avec succès."
     else
-        echo "Erreur lors de la création de l'image server-minecraft:$dir_name."
+        echo "Erreur lors de la création de l'image server-minecraft:${dir_name}."
     fi
 done

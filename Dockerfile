@@ -1,19 +1,20 @@
 FROM alpine:latest
 
+ARG JAR_FILE
+
 ENV MC_RAM="4G" \
     JAVA_OPTS=""
+
+COPY start.sh .
 
 RUN apk update \
     && apk add udev \
     && apk add bash \
-    && apk add wget \
     && apk add openjdk17-jre \
     && apk cache clean \
-    && wget https://raw.githubusercontent.com/LyFl0w/docker-minecraft-server/main/start.sh \
-    && apk del wget \
     && mkdir /server
 
-COPY build/BungeeCord.jar .
+COPY build/${JAR_FILE}.jar .
 
 CMD ["bash", "./start.sh"]
 
