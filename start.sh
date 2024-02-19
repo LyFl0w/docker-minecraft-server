@@ -5,6 +5,8 @@ if [ -f "server/*.jar" ]; then
     rm server/*.jar
 fi
 
+chmod 770 -R /server
+
 JAR_FILE=$(ls *.jar)
 
 mv $JAR_FILE server/
