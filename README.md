@@ -15,7 +15,7 @@ You can use spigot, paper or bungeecord for the tags
 docker run -p 25565:25565 -v ./servermc:/server -it server-minecraft:xxxx
 ```
 
-## run docker compose example
+## run docker compose example
 ```bash
 docker compose up -d
 ```
