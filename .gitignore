@@ -1,11 +1,9 @@
 .vscode/settings.json
 
-build/
 BuildData/
 Bukkit/
 CraftBukkit/
 
 servermc/
 
-
-!build/download.sh
+*.jar
